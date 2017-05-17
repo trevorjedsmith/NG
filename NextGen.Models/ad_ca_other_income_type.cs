@@ -1,0 +1,36 @@
+namespace NextGen.Models
+{
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.ComponentModel.DataAnnotations.Schema;
+    using System.Data.Entity.Spatial;
+
+    public partial class ad_ca_other_income_type
+    {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ad_ca_other_income_type()
+        {
+            ca_other_income = new HashSet<ca_other_income>();
+        }
+
+        [Key]
+        public int ad_ca_other_income_type_id { get; set; }
+
+        [StringLength(100)]
+        public string lending_description { get; set; }
+
+        [StringLength(100)]
+        public string lixi_description { get; set; }
+
+        [StringLength(100)]
+        public string symtrix_description { get; set; }
+
+        public decimal? percent_for_affordability { get; set; }
+
+        public bool active { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ca_other_income> ca_other_income { get; set; }
+    }
+}

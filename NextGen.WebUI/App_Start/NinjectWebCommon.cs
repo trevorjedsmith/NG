@@ -10,6 +10,9 @@ namespace NextGen.WebUI.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using NextGen.WebUI.Infrastructure;
+    using System.Web.Http;
+    using WebApiContrib.IoC.Ninject;
 
     public static class NinjectWebCommon 
     {
@@ -61,6 +64,11 @@ namespace NextGen.WebUI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            //MVC
+            System.Web.Mvc.DependencyResolver.SetResolver(new
+                NinjectDependencyResolver(kernel));
+            //Web API
+            GlobalConfiguration.Configuration.DependencyResolver = new NinjectResolver(kernel);
         }        
     }
 }

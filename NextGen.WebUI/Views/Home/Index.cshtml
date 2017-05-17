@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<NextGen.Models.ch_submission>
+@{
     ViewBag.Title = "Home Page";
 }
 
@@ -7,6 +8,27 @@
     <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
 </div>
+
+<table class="table-striped table-bordered">
+<tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td class="text-center">@item.application_reference</td>
+            <td class="text-center">@item.ch_process</td>
+            <td class="text-center">@item.ch_submission_id</td>
+            <td class="text-center">@item.ip_address</td>
+            <td class="text-center">@item.received_datetime</td>
+            <td class="text-center">@item.received_schema_format</td>
+            <td class="text-center">@item.received_xml</td>
+            <td class="text-center">@item.system</td>
+        </tr>
+
+    }
+</tbody>
+  
+    
+</table>
 
 <div class="row">
     <div class="col-md-4">
